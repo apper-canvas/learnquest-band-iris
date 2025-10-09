@@ -27,11 +27,8 @@ const ChallengeCard = ({
     setIsSubmitted(false);
     setIsCorrect(false);
   }, [challenge, timerDuration]);
-
-  const handleSubmit = () => {
 const handleSubmit = () => {
     if (!selectedAnswer) return;
-    
     setIsSubmitted(true);
     const correct = selectedAnswer === challenge.correctAnswer;
     setIsCorrect(correct);
