@@ -1,7 +1,6 @@
 import progressData from "../mockData/progress.json";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 let progressState = [...progressData];
 
 const progressService = {
@@ -65,6 +64,38 @@ const progressService = {
       return { ...progressState[0] };
     }
     return null;
+},
+
+addBonusStars: async (bonusAmount) => {
+    await delay(200);
+    if (progressState[0]) {
+      progressState[0].totalStars += bonusAmount;
+      progressState[0].lastActive = new Date().toISOString();
+      return { ...progressState[0] };
+    }
+    return null;
+  },
+
+  getAchievementStats: async () => {
+    await delay(200);
+    const stored = localStorage.getItem('learnquest_achievement_stats');
+    if (stored) {
+      return JSON.parse(stored);
+    }
+    return {
+      timedChallengesCompleted: 0,
+      fastestTime: null,
+      totalBonusStarsEarned: 0,
+      achievementsUnlocked: 0
+    };
+  },
+
+  updateAchievementStats: async (newStats) => {
+    await delay(200);
+    const current = await progressService.getAchievementStats();
+    const updated = { ...current, ...newStats };
+    localStorage.setItem('learnquest_achievement_stats', JSON.stringify(updated));
+    return updated;
   }
 };
 

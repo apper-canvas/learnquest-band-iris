@@ -1,34 +1,62 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Timer from "@/components/atoms/Timer";
+import ApperIcon from "@/components/ApperIcon";
+import ChallengeOption from "@/components/molecules/ChallengeOption";
 import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
-import ChallengeOption from "@/components/molecules/ChallengeOption";
-import ApperIcon from "@/components/ApperIcon";
 
 const ChallengeCard = ({ 
   challenge, 
   onComplete,
   challengeNumber,
-  totalChallenges 
+  totalChallenges,
+  isTimedMode = false,
+  timerDuration = 30
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [challengeStartTime, setChallengeStartTime] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(timerDuration);
+  
+  useEffect(() => {
+    setChallengeStartTime(Date.now());
+    setTimeLeft(timerDuration);
+    setSelectedAnswer(null);
+    setIsSubmitted(false);
+    setIsCorrect(false);
+  }, [challenge, timerDuration]);
 
   const handleSubmit = () => {
+const handleSubmit = () => {
     if (!selectedAnswer) return;
     
     setIsSubmitted(true);
     const correct = selectedAnswer === challenge.correctAnswer;
     setIsCorrect(correct);
+    
+    // Calculate completion time for timed mode
+    const completionTime = isTimedMode ? Math.max(0, timerDuration - timeLeft) : null;
 
     setTimeout(() => {
       const stars = correct ? 3 : selectedAnswer ? 1 : 0;
-      onComplete(stars, correct);
+      onComplete(stars, correct, completionTime);
+    }, 1500);
+  };
+  
+  const handleTimeUp = () => {
+    if (isSubmitted) return;
+    
+    setIsSubmitted(true);
+    setIsCorrect(false);
+    
+    setTimeout(() => {
+      onComplete(0, false, timerDuration); // Full time elapsed
     }, 1500);
   };
 
-  return (
+return (
     <Card className="max-w-3xl mx-auto">
       <div className="space-y-6">
         <div className="flex items-center justify-between">
@@ -42,15 +70,26 @@ const ChallengeCard = ({
               Question {challengeNumber} of {totalChallenges}
             </span>
           </div>
-          <div className="flex gap-1">
-            {[...Array(totalChallenges)].map((_, idx) => (
-              <div
-                key={idx}
-                className={`w-2 h-2 rounded-full ${
-                  idx < challengeNumber ? "bg-success" : "bg-gray-300"
-                }`}
+          
+          <div className="flex items-center gap-4">
+            {isTimedMode && (
+              <Timer
+                duration={timerDuration}
+                onTimeUp={handleTimeUp}
+                isActive={!isSubmitted}
+                onTick={(timeRemaining) => setTimeLeft(timeRemaining)}
               />
-            ))}
+            )}
+            <div className="flex gap-1">
+              {[...Array(totalChallenges)].map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`w-2 h-2 rounded-full ${
+                    idx < challengeNumber ? "bg-success" : "bg-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 

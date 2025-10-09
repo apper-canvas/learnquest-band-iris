@@ -29,7 +29,8 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
 <Route path="/" element={<Home />} />
-            <Route path="/challenges/:subject" element={<ChallengePage />} />
+<Route path="/challenges/:subject" element={<ChallengePage />} />
+            <Route path="/challenges/:subject/timed" element={<ChallengePage />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/avatar" element={<AvatarCustomization />} />
           </Routes>
