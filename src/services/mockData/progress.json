@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "childId": "child-1",
+    "totalStars": 156,
+    "mathLevel": 3,
+    "readingLevel": 2,
+    "skillsMastered": ["Addition Level 1", "Addition Level 2", "Subtraction Level 1", "Word Recognition Level 1"],
+    "lastActive": "2024-01-15T10:30:00Z",
+    "streak": 7
+  }
+]

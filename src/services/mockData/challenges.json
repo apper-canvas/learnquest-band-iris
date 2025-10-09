@@ -1,0 +1,222 @@
+[
+  {
+    "Id": 1,
+    "type": "math",
+    "skill": "Addition",
+    "difficulty": 1,
+    "question": "What is 2 + 3?",
+    "options": ["4", "5", "6", "7"],
+    "correctAnswer": "5",
+    "points": 10
+  },
+  {
+    "Id": 2,
+    "type": "math",
+    "skill": "Addition",
+    "difficulty": 1,
+    "question": "What is 4 + 1?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "5",
+    "points": 10
+  },
+  {
+    "Id": 3,
+    "type": "math",
+    "skill": "Addition",
+    "difficulty": 2,
+    "question": "What is 8 + 7?",
+    "options": ["14", "15", "16", "17"],
+    "correctAnswer": "15",
+    "points": 15
+  },
+  {
+    "Id": 4,
+    "type": "math",
+    "skill": "Addition",
+    "difficulty": 2,
+    "question": "What is 12 + 9?",
+    "options": ["20", "21", "22", "23"],
+    "correctAnswer": "21",
+    "points": 15
+  },
+  {
+    "Id": 5,
+    "type": "math",
+    "skill": "Addition",
+    "difficulty": 3,
+    "question": "What is 25 + 18?",
+    "options": ["41", "42", "43", "44"],
+    "correctAnswer": "43",
+    "points": 20
+  },
+  {
+    "Id": 6,
+    "type": "math",
+    "skill": "Subtraction",
+    "difficulty": 1,
+    "question": "What is 5 - 2?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "3",
+    "points": 10
+  },
+  {
+    "Id": 7,
+    "type": "math",
+    "skill": "Subtraction",
+    "difficulty": 1,
+    "question": "What is 8 - 3?",
+    "options": ["4", "5", "6", "7"],
+    "correctAnswer": "5",
+    "points": 10
+  },
+  {
+    "Id": 8,
+    "type": "math",
+    "skill": "Subtraction",
+    "difficulty": 2,
+    "question": "What is 15 - 7?",
+    "options": ["6", "7", "8", "9"],
+    "correctAnswer": "8",
+    "points": 15
+  },
+  {
+    "Id": 9,
+    "type": "math",
+    "skill": "Multiplication",
+    "difficulty": 1,
+    "question": "What is 2 × 3?",
+    "options": ["4", "5", "6", "7"],
+    "correctAnswer": "6",
+    "points": 10
+  },
+  {
+    "Id": 10,
+    "type": "math",
+    "skill": "Multiplication",
+    "difficulty": 1,
+    "question": "What is 3 × 4?",
+    "options": ["10", "11", "12", "13"],
+    "correctAnswer": "12",
+    "points": 10
+  },
+  {
+    "Id": 11,
+    "type": "math",
+    "skill": "Multiplication",
+    "difficulty": 2,
+    "question": "What is 5 × 6?",
+    "options": ["28", "29", "30", "31"],
+    "correctAnswer": "30",
+    "points": 15
+  },
+  {
+    "Id": 12,
+    "type": "math",
+    "skill": "Division",
+    "difficulty": 1,
+    "question": "What is 10 ÷ 2?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "5",
+    "points": 10
+  },
+  {
+    "Id": 13,
+    "type": "math",
+    "skill": "Division",
+    "difficulty": 1,
+    "question": "What is 12 ÷ 3?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4",
+    "points": 10
+  },
+  {
+    "Id": 14,
+    "type": "reading",
+    "skill": "Word Recognition",
+    "difficulty": 1,
+    "question": "Which word means a place where you learn?",
+    "options": ["School", "Park", "Store", "Home"],
+    "correctAnswer": "School",
+    "points": 10
+  },
+  {
+    "Id": 15,
+    "type": "reading",
+    "skill": "Word Recognition",
+    "difficulty": 1,
+    "question": "Which word means a large animal with a trunk?",
+    "options": ["Dog", "Cat", "Elephant", "Bird"],
+    "correctAnswer": "Elephant",
+    "points": 10
+  },
+  {
+    "Id": 16,
+    "type": "reading",
+    "skill": "Word Recognition",
+    "difficulty": 2,
+    "question": "Which word means very happy?",
+    "options": ["Sad", "Angry", "Joyful", "Tired"],
+    "correctAnswer": "Joyful",
+    "points": 15
+  },
+  {
+    "Id": 17,
+    "type": "reading",
+    "skill": "Sentence Building",
+    "difficulty": 1,
+    "question": "Complete the sentence: The cat ___ on the mat.",
+    "options": ["sit", "sits", "sitting", "sat"],
+    "correctAnswer": "sits",
+    "points": 10
+  },
+  {
+    "Id": 18,
+    "type": "reading",
+    "skill": "Sentence Building",
+    "difficulty": 1,
+    "question": "Complete the sentence: I ___ to school every day.",
+    "options": ["go", "goes", "went", "going"],
+    "correctAnswer": "go",
+    "points": 10
+  },
+  {
+    "Id": 19,
+    "type": "reading",
+    "skill": "Sentence Building",
+    "difficulty": 2,
+    "question": "Complete the sentence: The birds ___ in the sky yesterday.",
+    "options": ["fly", "flies", "flew", "flying"],
+    "correctAnswer": "flew",
+    "points": 15
+  },
+  {
+    "Id": 20,
+    "type": "reading",
+    "skill": "Comprehension",
+    "difficulty": 1,
+    "question": "Tom has a red ball. What color is Tom's ball?",
+    "options": ["Blue", "Red", "Green", "Yellow"],
+    "correctAnswer": "Red",
+    "points": 10
+  },
+  {
+    "Id": 21,
+    "type": "reading",
+    "skill": "Comprehension",
+    "difficulty": 2,
+    "question": "The sun rises in the morning and sets in the evening. When does the sun rise?",
+    "options": ["Morning", "Afternoon", "Evening", "Night"],
+    "correctAnswer": "Morning",
+    "points": 15
+  },
+  {
+    "Id": 22,
+    "type": "reading",
+    "skill": "Comprehension",
+    "difficulty": 3,
+    "question": "Sarah planted a seed. She watered it every day. Soon a plant grew. What helped the plant grow?",
+    "options": ["Only sunlight", "Only soil", "Water and care", "Nothing"],
+    "correctAnswer": "Water and care",
+    "points": 20
+  }
+]

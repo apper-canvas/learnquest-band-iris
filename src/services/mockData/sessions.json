@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "subject": "math",
+    "challengesCompleted": 5,
+    "starsEarned": 14,
+    "accuracy": 93,
+    "duration": 420,
+    "timestamp": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "subject": "reading",
+    "challengesCompleted": 4,
+    "starsEarned": 11,
+    "accuracy": 87,
+    "duration": 360,
+    "timestamp": "2024-01-14T14:15:00Z"
+  },
+  {
+    "Id": 3,
+    "subject": "math",
+    "challengesCompleted": 6,
+    "starsEarned": 15,
+    "accuracy": 83,
+    "duration": 480,
+    "timestamp": "2024-01-13T09:45:00Z"
+  }
+]
