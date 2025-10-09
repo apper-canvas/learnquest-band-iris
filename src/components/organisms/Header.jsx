@@ -31,7 +31,7 @@ const Header = ({ totalStars = 0 }) => {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <NavItem 
+<NavItem 
               label="Home" 
               icon="Home" 
               onClick={() => navigate("/")} 
@@ -48,6 +48,12 @@ const Header = ({ totalStars = 0 }) => {
               icon="BookOpen" 
               onClick={() => navigate("/challenges/reading")} 
               active={location.pathname.includes("/reading")}
+            />
+            <NavItem 
+              label="Avatar" 
+              icon="User" 
+              onClick={() => navigate("/avatar")} 
+              active={location.pathname === "/avatar"}
             />
             <NavItem 
               label="Progress" 
@@ -67,10 +73,11 @@ const Header = ({ totalStars = 0 }) => {
         </div>
 
         <div className="md:hidden pb-4">
-          <div className="flex items-center justify-around">
+<div className="flex items-center justify-around">
             <MobileNavItem label="Home" icon="Home" onClick={() => navigate("/")} active={isHome} />
             <MobileNavItem label="Math" icon="Calculator" onClick={() => navigate("/challenges/math")} active={location.pathname.includes("/math")} />
             <MobileNavItem label="Reading" icon="BookOpen" onClick={() => navigate("/challenges/reading")} active={location.pathname.includes("/reading")} />
+            <MobileNavItem label="Avatar" icon="User" onClick={() => navigate("/avatar")} active={location.pathname === "/avatar"} />
             <MobileNavItem label="Progress" icon="TrendingUp" onClick={() => navigate("/progress")} active={location.pathname === "/progress"} />
           </div>
         </div>
