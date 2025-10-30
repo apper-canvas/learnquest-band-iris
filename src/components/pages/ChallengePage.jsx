@@ -37,8 +37,8 @@ const loadChallenges = async () => {
       setLoading(true);
       setError(null);
       
-      // Check if we should show mode selection first
-      if (!isTimedMode && location.pathname === `/challenges/${subject}`) {
+      // Check if we should show mode selection first (only if not already selecting mode)
+      if (!isTimedMode && location.pathname === `/challenges/${subject}` && !showModeSelect) {
         setShowModeSelect(true);
         setLoading(false);
         return;
@@ -144,6 +144,7 @@ const handleModeSelect = (timed = false) => {
       navigate(`/challenges/${subject}/timed`);
     } else {
       // Load challenges for regular mode
+      setLoading(true);
       loadChallenges();
     }
   };
