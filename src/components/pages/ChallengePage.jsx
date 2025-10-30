@@ -38,8 +38,7 @@ const loadChallenges = async () => {
       setError(null);
       
       // Check if we should show mode selection first
-      if (!isTimedMode && location.pathname === `/challenges/${subject}`) {
-        setShowModeSelect(true);
+      if (!isTimedMode && location.pathname === `/challenges/${subject}` && showModeSelect) {
         setLoading(false);
         return;
       }
@@ -59,7 +58,7 @@ const loadChallenges = async () => {
 
   useEffect(() => {
     loadChallenges();
-  }, [subject, location.pathname]);
+  }, [subject, location.pathname, showModeSelect]);
 const handleChallengeComplete = async (stars, correct, completionTime = null) => {
     let finalStars = stars;
     let timeBonus = 0;
@@ -138,13 +137,13 @@ const handlePlayAgain = () => {
     loadChallenges();
   };
   
-  const handleModeSelect = (timed = false) => {
+const handleModeSelect = (timed = false) => {
     setShowModeSelect(false);
     if (timed) {
       navigate(`/challenges/${subject}/timed`);
-    } else {
-      setLoading(false);
     }
+    // For regular mode, the useEffect will trigger loadChallenges automatically
+    // when showModeSelect changes to false
   };
 
   if (loading) return <Loading message="Loading challenges..." />;
