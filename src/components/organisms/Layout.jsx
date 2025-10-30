@@ -1,20 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "@/components/organisms/Header";
 import progressService from "@/services/api/progressService";
+import Header from "@/components/organisms/Header";
 
 const Layout = () => {
   const [totalStars, setTotalStars] = useState(0);
 
-  useEffect(() => {
+useEffect(() => {
     const loadStars = async () => {
       const progress = await progressService.getCurrentProgress();
       setTotalStars(progress?.totalStars || 0);
     };
     loadStars();
-
-    const interval = setInterval(loadStars, 5000);
-    return () => clearInterval(interval);
   }, []);
 
   return (

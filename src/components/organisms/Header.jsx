@@ -4,7 +4,8 @@ import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
 
 const Header = () => {
-  const { totalStars = 0 } = useOutletContext();
+  const context = useOutletContext();
+  const totalStars = context?.totalStars ?? 0;
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
