@@ -7,14 +7,13 @@ import ResultsModal from "@/components/organisms/ResultsModal";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Button from "@/components/atoms/Button";
-import ApperIcon from "@/components/ApperIcon";
 import challengeService from "@/services/api/challengeService";
 import progressService from "@/services/api/progressService";
 import sessionService from "@/services/api/sessionService";
 import achievementService from "@/services/api/achievementService";
 
 const ChallengePage = () => {
-const { subject } = useParams();
+  const { subject } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -32,31 +31,22 @@ const { subject } = useParams();
   const [achievements, setAchievements] = useState([]);
   
   // Check if this is a timed challenge mode
-const isTimedMode = location.pathname.includes('/timed');
-  const isStoryTime = location.pathname.includes('/story-time');
-
-  const loadChallenges = async () => {
+  const isTimedMode = location.pathname.includes('/timed');
+const loadChallenges = async () => {
     try {
       setLoading(true);
       setError(null);
       
       // Check if we should show mode selection first
-      if (!isTimedMode && ((subject && location.pathname === `/challenges/${subject}`) || location.pathname === '/story-time') && showModeSelect) {
+      if (!isTimedMode && location.pathname === `/challenges/${subject}`) {
+        setShowModeSelect(true);
         setLoading(false);
         return;
       }
       
-      let data;
-      if (isStoryTime) {
-        // Load story-type challenges specifically
-        data = await challengeService.getRandomByType('story', 5);
-      } else {
-        // Load challenges by subject
-        data = await challengeService.getRandomByType(subject, 5);
-      }
-      
+      const data = await challengeService.getRandomByType(subject, 5);
       if (data.length === 0) {
-        setError(isStoryTime ? "No story challenges available." : "No challenges available for this subject.");
+        setError("No challenges available for this subject.");
       } else {
         setChallenges(data);
       }
@@ -69,7 +59,7 @@ const isTimedMode = location.pathname.includes('/timed');
 
   useEffect(() => {
     loadChallenges();
-  }, [subject, location.pathname, showModeSelect]);
+  }, [subject, location.pathname]);
 const handleChallengeComplete = async (stars, correct, completionTime = null) => {
     let finalStars = stars;
     let timeBonus = 0;
@@ -148,21 +138,13 @@ const handlePlayAgain = () => {
     loadChallenges();
   };
   
-const handleModeSelect = (timed = false) => {
+  const handleModeSelect = (timed = false) => {
     setShowModeSelect(false);
     if (timed) {
-      if (isStoryTime) {
-        navigate('/story-time/timed');
-      } else {
-        navigate(`/challenges/${subject}/timed`);
-      }
+      navigate(`/challenges/${subject}/timed`);
+    } else {
+      setLoading(false);
     }
-    // For regular mode, the useEffect will trigger loadChallenges automatically
-    // when showModeSelect changes to false
-  };
-
-  const handleMiniGames = () => {
-    navigate("/mini-games");
   };
 
   if (loading) return <Loading message="Loading challenges..." />;
@@ -178,12 +160,12 @@ return (
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-8 py-12"
         >
-<div className="space-y-4">
+          <div className="space-y-4">
             <h2 className="text-3xl font-display text-gray-800">
               Choose Challenge Mode
             </h2>
             <p className="text-gray-600 text-lg">
-              Select how you'd like to practice {isStoryTime ? 'Story Time' : subject}
+              Select how you'd like to practice {subject}
             </p>
           </div>
           
@@ -259,16 +241,7 @@ return (
           isTimedMode={isTimedMode}
           averageTime={challengeTimes.length > 0 ? challengeTimes.reduce((a, b) => a + b, 0) / challengeTimes.length : null}
           achievements={achievements}
-        >
-          <Button
-            variant="outline"
-            onClick={handleMiniGames}
-            className="mt-4"
-          >
-            <ApperIcon name="Gamepad2" size={20} className="mr-2" />
-            Try Mini-Games
-          </Button>
-        </ResultsModal>
+        />
       )}
     </div>
   );
