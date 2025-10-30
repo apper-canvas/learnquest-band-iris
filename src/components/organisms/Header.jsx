@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useOutletContext } from "react-router-dom";
 import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
 
-const Header = ({ totalStars = 0 }) => {
+const Header = () => {
+  const { totalStars = 0 } = useOutletContext();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
