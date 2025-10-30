@@ -138,12 +138,13 @@ const handlePlayAgain = () => {
     loadChallenges();
   };
   
-  const handleModeSelect = (timed = false) => {
+const handleModeSelect = (timed = false) => {
     setShowModeSelect(false);
     if (timed) {
       navigate(`/challenges/${subject}/timed`);
     } else {
-      setLoading(false);
+      // Load challenges for regular mode
+      loadChallenges();
     }
   };
 
