@@ -215,8 +215,62 @@
     "skill": "Comprehension",
     "difficulty": 3,
     "question": "Sarah planted a seed. She watered it every day. Soon a plant grew. What helped the plant grow?",
-    "options": ["Only sunlight", "Only soil", "Water and care", "Nothing"],
-    "correctAnswer": "Water and care",
+"correctAnswer": "Water and care",
     "points": 20
+  },
+  {
+    "Id": 23,
+    "type": "story",
+    "skill": "Story Comprehension",
+    "difficulty": 1,
+    "story": "Once upon a time, there was a little duck named Daisy. Daisy loved to swim in the pond every morning. One day, she found a shiny stone by the water. She showed it to all her friends. They thought it was beautiful!",
+    "question": "Where did Daisy like to swim?",
+    "options": ["In the ocean", "In the pond", "In a pool", "In a river"],
+    "correctAnswer": "In the pond",
+    "points": 15
+  },
+  {
+    "Id": 24,
+    "type": "story",
+    "skill": "Story Comprehension",
+    "difficulty": 1,
+    "story": "Tommy had a red balloon. He loved his balloon very much. One windy day, the balloon flew up into the sky. Tommy was sad at first. But then he saw a beautiful rainbow, and he smiled again.",
+    "question": "What happened to Tommy's balloon?",
+    "options": ["It popped", "It flew into the sky", "He gave it away", "He kept it"],
+    "correctAnswer": "It flew into the sky",
+    "points": 15
+  },
+  {
+    "Id": 25,
+    "type": "story",
+    "skill": "Story Comprehension",
+    "difficulty": 2,
+    "story": "Benny the bear loved honey. Every day, he would climb the tallest tree to find beehives. The bees didn't mind because Benny was always very careful and kind. He would only take a little bit of honey and always say thank you. The bees became his best friends.",
+    "question": "Why did the bees not mind Benny taking honey?",
+    "options": ["He was scary", "He was careful and kind", "He didn't take any", "He gave them food"],
+    "correctAnswer": "He was careful and kind",
+    "points": 20
+  },
+  {
+    "Id": 26,
+    "type": "story",
+    "skill": "Story Comprehension",
+    "difficulty": 2,
+    "story": "In a small garden, there lived many colorful flowers. There was Rose who was red, Lily who was white, and Sunny who was yellow. Every morning, they would greet each other. They loved when children came to visit and smell their sweet perfume. The garden was always full of joy and laughter.",
+    "question": "What made the garden full of joy?",
+    "options": ["The rain", "The flowers greeting each other and children visiting", "The wind", "The butterflies"],
+    "correctAnswer": "The flowers greeting each other and children visiting",
+    "points": 20
+  },
+  {
+    "Id": 27,
+    "type": "story",
+    "skill": "Story Comprehension",
+    "difficulty": 3,
+    "story": "Princess Luna had a magical garden where she planted special seeds. These seeds would grow into plants that glowed at night. She shared these glowing flowers with everyone in the kingdom. The flowers helped people see in the dark and made everyone happy. The kingdom became known as the Land of Light.",
+    "question": "What was special about Princess Luna's plants?",
+    "options": ["They were very tall", "They glowed at night", "They grew very fast", "They smelled nice"],
+    "correctAnswer": "They glowed at night",
+    "points": 25
   }
 ]
