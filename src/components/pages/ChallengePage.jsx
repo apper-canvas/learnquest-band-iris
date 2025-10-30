@@ -32,21 +32,31 @@ const { subject } = useParams();
   const [achievements, setAchievements] = useState([]);
   
   // Check if this is a timed challenge mode
-  const isTimedMode = location.pathname.includes('/timed');
-const loadChallenges = async () => {
+const isTimedMode = location.pathname.includes('/timed');
+  const isStoryTime = location.pathname.includes('/story-time');
+
+  const loadChallenges = async () => {
     try {
       setLoading(true);
       setError(null);
       
       // Check if we should show mode selection first
-      if (!isTimedMode && location.pathname === `/challenges/${subject}` && showModeSelect) {
+      if (!isTimedMode && ((subject && location.pathname === `/challenges/${subject}`) || location.pathname === '/story-time') && showModeSelect) {
         setLoading(false);
         return;
       }
       
-      const data = await challengeService.getRandomByType(subject, 5);
+      let data;
+      if (isStoryTime) {
+        // Load story-type challenges specifically
+        data = await challengeService.getRandomByType('story', 5);
+      } else {
+        // Load challenges by subject
+        data = await challengeService.getRandomByType(subject, 5);
+      }
+      
       if (data.length === 0) {
-        setError("No challenges available for this subject.");
+        setError(isStoryTime ? "No story challenges available." : "No challenges available for this subject.");
       } else {
         setChallenges(data);
       }
@@ -141,7 +151,11 @@ const handlePlayAgain = () => {
 const handleModeSelect = (timed = false) => {
     setShowModeSelect(false);
     if (timed) {
-      navigate(`/challenges/${subject}/timed`);
+      if (isStoryTime) {
+        navigate('/story-time/timed');
+      } else {
+        navigate(`/challenges/${subject}/timed`);
+      }
     }
     // For regular mode, the useEffect will trigger loadChallenges automatically
     // when showModeSelect changes to false
@@ -164,12 +178,12 @@ return (
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-8 py-12"
         >
-          <div className="space-y-4">
+<div className="space-y-4">
             <h2 className="text-3xl font-display text-gray-800">
               Choose Challenge Mode
             </h2>
             <p className="text-gray-600 text-lg">
-              Select how you'd like to practice {subject}
+              Select how you'd like to practice {isStoryTime ? 'Story Time' : subject}
             </p>
           </div>
           

@@ -89,7 +89,7 @@ const mainRoutes = [
       </Suspense>
     )
   },
-  {
+{
     path: "avatar",
     element: (
       <Suspense fallback={<SuspenseFallback />}>
@@ -97,7 +97,23 @@ const mainRoutes = [
       </Suspense>
     )
   },
-{
+  {
+    path: "story-time",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <ChallengePage />
+      </Suspense>
+    )
+  },
+  {
+    path: "story-time/timed",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <ChallengePage />
+      </Suspense>
+    )
+  },
+  {
     path: "*",
     element: (
       <Suspense fallback={<SuspenseFallback />}>
