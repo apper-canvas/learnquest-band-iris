@@ -7,13 +7,14 @@ import ResultsModal from "@/components/organisms/ResultsModal";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Button from "@/components/atoms/Button";
+import ApperIcon from "@/components/ApperIcon";
 import challengeService from "@/services/api/challengeService";
 import progressService from "@/services/api/progressService";
 import sessionService from "@/services/api/sessionService";
 import achievementService from "@/services/api/achievementService";
 
 const ChallengePage = () => {
-  const { subject } = useParams();
+const { subject } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -146,6 +147,10 @@ const handleModeSelect = (timed = false) => {
     // when showModeSelect changes to false
   };
 
+  const handleMiniGames = () => {
+    navigate("/mini-games");
+  };
+
   if (loading) return <Loading message="Loading challenges..." />;
   if (error) return <Error message={error} onRetry={loadChallenges} />;
 
@@ -240,7 +245,16 @@ return (
           isTimedMode={isTimedMode}
           averageTime={challengeTimes.length > 0 ? challengeTimes.reduce((a, b) => a + b, 0) / challengeTimes.length : null}
           achievements={achievements}
-        />
+        >
+          <Button
+            variant="outline"
+            onClick={handleMiniGames}
+            className="mt-4"
+          >
+            <ApperIcon name="Gamepad2" size={20} className="mr-2" />
+            Try Mini-Games
+          </Button>
+        </ResultsModal>
       )}
     </div>
   );

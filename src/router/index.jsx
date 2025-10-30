@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "@/components/organisms/Layout";
 
@@ -6,6 +6,10 @@ const Home = lazy(() => import("@/components/pages/Home"));
 const ChallengePage = lazy(() => import("@/components/pages/ChallengePage"));
 const Progress = lazy(() => import("@/components/pages/Progress"));
 const AvatarCustomization = lazy(() => import("@/components/pages/AvatarCustomization"));
+const MiniGamesHub = lazy(() => import("@/components/pages/MiniGamesHub"));
+const MonsterMathGame = lazy(() => import("@/components/pages/MonsterMathGame"));
+const NumberMazeGame = lazy(() => import("@/components/pages/NumberMazeGame"));
+const MathPuzzlesGame = lazy(() => import("@/components/pages/MathPuzzlesGame"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 
 const SuspenseFallback = () => (
@@ -29,7 +33,7 @@ const mainRoutes = [
       </Suspense>
     )
   },
-  {
+{
     path: "challenges/:subject",
     element: (
       <Suspense fallback={<SuspenseFallback />}>
@@ -42,6 +46,38 @@ const mainRoutes = [
     element: (
       <Suspense fallback={<SuspenseFallback />}>
         <ChallengePage />
+      </Suspense>
+    )
+  },
+  {
+    path: "mini-games",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <MiniGamesHub />
+      </Suspense>
+    )
+  },
+  {
+    path: "mini-games/monster-math",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <MonsterMathGame />
+      </Suspense>
+    )
+  },
+  {
+    path: "mini-games/number-maze",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <NumberMazeGame />
+      </Suspense>
+    )
+  },
+  {
+    path: "mini-games/math-puzzles",
+    element: (
+      <Suspense fallback={<SuspenseFallback />}>
+        <MathPuzzlesGame />
       </Suspense>
     )
   },
@@ -61,7 +97,7 @@ const mainRoutes = [
       </Suspense>
     )
   },
-  {
+{
     path: "*",
     element: (
       <Suspense fallback={<SuspenseFallback />}>
